@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+<form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
+    <label>Title:</label>
+    <input type="text" name="title" value="<%= recipe.title %>">
+
+    <label>Ingredients:</label>
+    <input type="text" name="ingredients" value="<%= recipe.ingredients %>">
+
+    <label>Instructions:</label>
+    <input type="text" name="instructions" value="<%= recipe.instructions %>">
+
+    <label>Country of Origin</label>
+
+    <select name="country"  value="<%= recipe.country %>">
+        <option value="East Asian">East Asian</option>
+        <option value="South Asian">South Asian</option>
+        <option value="North Asian">North Asian</option>
+        <option value="Central Asian">Central Asian</option>
+        <option value="West Asian">West Asian</option>
+        <option value="South East Asian">South East Asian</option>
+        <option value="European">European</option>
+        <option value="North American">North American</option>
+        <option value="South American">South American</option>
+        <option value="African">African</option>
+        <option value="Oceanian">Oceanian</option>
+        <option value="Other">Other</option>
+    </select>
+    
+
+    <button type="submit">Update Recipe</button>
+</form>
+
+<%- include('../partials/footer') %>

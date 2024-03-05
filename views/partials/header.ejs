@@ -8,6 +8,7 @@
 </head>
 <body>
     <nav>
+      <a href="/recipes">Recipes</a>
         <a href="/recipes/new" <%- title === 'Add Recipe' ? 'class="active"' : '' %>>Add Recipe</a>
         <% if (user) { %>
           <a href="/favourites/index" <%- title === 'Favourties' ? 'class="active"' : '' %>>Favourties</a>

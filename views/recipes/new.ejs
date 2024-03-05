@@ -1,4 +1,4 @@
-<%- include('./partials/header') %>
+<%- include('../partials/header.ejs') %>
 
 <form action="/recipes" enctype="multipart/form-data" method="POST">
     <label>Image:</label>
@@ -8,14 +8,14 @@
     <input type="text" name="title">
 
     <label>Ingredients:</label>
-    <input type="text" name="">
+    <input type="text" name="ingredients">
 
     <label>Instructions:</label>
-    <input type="text" name="">
+    <input type="text" name="instructions">
 
     <label>Country of Origin</label>
 
-    <select name="countryOfOrigin">
+    <select name="country">
         <option value="East Asian">East Asian</option>
         <option value="South Asian">South Asian</option>
         <option value="North Asian">North Asian</option>
@@ -33,4 +33,4 @@
     <input type="submit" value="Add Recipe">
 </form>
 
-<%- include('./partials/footer') %>
+<%- include('../partials/footer') %>

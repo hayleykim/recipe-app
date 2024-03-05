@@ -1,0 +1,21 @@
+<%- include('../partials/header.ejs') %>
+
+<% Object.keys(recipesByCountry).forEach(function(country) { %>
+    <h2><%= country %></h2>
+    <div class="countrySection">
+        <% recipesByCountry[country].forEach(function(recipe) { %>
+            <div class="recipe">
+                <% if (recipe.image) { %>
+                    <div><a href="/recipes/<%= recipe._id %>"><img class="recipeImg" src="<%= recipe.image %>"></a></div>
+                <% } %>
+                <div><a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a></div>
+            </div>
+        <% }); %>
+    </div>
+<% }); %>
+
+
+
+
+
+<%- include('../partials/footer') %>

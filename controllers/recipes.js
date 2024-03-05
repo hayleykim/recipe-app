@@ -5,12 +5,21 @@ module.exports = {
     index,
     show,
     new: newRecipe,
-    create
+    create,
+    delete: deleteRecipe,
+    edit,
+    update
 }
 
 async function index(req, res) {
-    const recipes = await Recipe.find({});
-    res.render('recipes/index', {title: 'Recipes', recipes});
+    try {
+        const recipes = await Recipe.find({});
+        const recipesByCountry = groupRecipesByCountry(recipes);
+
+        res.render('recipes/index', { title: 'Recipes', recipes, recipesByCountry });
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 async function show(req, res) {
@@ -35,10 +44,55 @@ async function create(req, res) {
             cloudinary_id: result.public_id
         })
         await recipe.save();
-        res.redirect('/recipes/${recipe._id}');
+        //res.redirect('/recipes/${recipe._id}');
+        res.redirect('/recipes');
 
     } catch (err) {
         console.log(err);
-        res.render('recipes/new', {errorMsg: err.message});
+        res.render('recipes/new', {title: 'Recipe Detail', errorMsg: err.message});
+    }
+}
+
+function groupRecipesByCountry(recipes) {
+    const recipesByCountry = {};
+
+    recipes.forEach((recipe) => {
+        const country = recipe.country;
+
+        if (!recipesByCountry[country]) {
+            recipesByCountry[country] = [];
+        }
+
+        recipesByCountry[country].push(recipe);
+    });
+
+    return recipesByCountry;
+}
+
+async function deleteRecipe(req, res) {
+    try {
+        const id = req.params.id;
+        await Recipe.findOneAndDelete({ _id: id });
+        res.redirect('/recipes');
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function edit(req, res) {
+    try {
+        const recipe = await Recipe.findById(req.params.id);
+        res.render('recipes/edit', { title: 'Edit Recipe', recipe });
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function update(req, res) {
+    try {
+        await Recipe.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect(`/recipes/${req.params.id}`);
+    } catch (err) {
+        console.error(err);
     }
 }
