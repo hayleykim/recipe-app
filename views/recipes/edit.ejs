@@ -1,5 +1,13 @@
 <%- include('../partials/header') %>
 <section class="container col-md-8">
+    <div class="mb-3">
+        <a href="/recipes/<%= recipe._id %>" class="btn btn-secondary">< Back to <%= recipe.title %></a>
+    </div>
+
+    <div class="mb-3">
+        <img src="<%= recipe.image %>" class="img-fluid recipeImgDetail" alt="image of this recipe">
+    </div>
+
     <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST" class="container">            
         <div class="mb-3">
             <label for="title" class="form-label">Title:</label>
@@ -8,12 +16,12 @@
 
         <div class="mb-3">
             <label for="ingredients" class="form-label">Ingredients:</label>
-            <input type="text" class="form-control" id="ingredients" name="ingredients" value="<%= recipe.ingredients %>">
+            <textarea type="text" name="ingredients" id="ingredients" class="form-control"><%= recipe.ingredients %></textarea>
         </div>
 
         <div class="mb-3">
             <label for="instructions" class="form-label">Instructions:</label>
-            <input type="text" class="form-control" id="instructions" name="instructions" value="<%= recipe.instructions %>">
+            <textarea type="text" name="instructions" id="instructions" class="form-control"><%= recipe.instructions %></textarea>
         </div>
 
         <div class="mb-3">

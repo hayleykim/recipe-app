@@ -1,14 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const availableCountries = ['East Asian', 'South Asian', 'North Asian', 'Central Asian', 'West Asian', 'South East Asian', 'European', 'North American', 'South American', 'African', 'Oceanian', 'Other']
-
-
-const favouriteSchema = new Schema({
-
-}, {
-    timestamps: true
-});
+const availableCountries = ['East Asian', 'South Asian', 'North Asian', 'Central Asian', 'West Asian', 'South East Asian', 'European', 'North American', 'South American', 'African', 'Oceanian', 'Other'];
 
 const reviewSchema = new Schema({
     content: {
@@ -55,8 +48,11 @@ const recipeSchema = new Schema({
     cloudinary_id: {
         type: String
     },
+    favourites: {
+        type: Schema.Types.ObjectId,
+        ref: 'Favourite'
+    },  
     reviews: [reviewSchema],
-    favourites: [favouriteSchema]
      
 }, {
     timestamps: true

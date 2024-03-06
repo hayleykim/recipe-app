@@ -3,21 +3,28 @@
 <div class="row">
     <div class="offset-md-4 col-md-4">
         <form action="/recipes" enctype="multipart/form-data" method="POST">
-            <div><label class="form-label">Image:</label></div>
-            <div><input type="file" name="image"></div>
-    
-            <div><label class="form-label">Title:</label></div>
-            <div><input type="text" name="title"  class="form-control"></div>
-    
-            <div><label class="form-label">Ingredients:</label></div>
-            <div><textarea type="text" name="ingredients" class="form-control"></textarea></div>
-    
-            <div><label class="form-label">Instructions:</label></div>
-            <div><textarea type="text" name="instructions" class="form-control"></textarea></div>
-    
-            <div><label class="form-label">Country of Origin</label></div>
+            <div class="mb-3">
+                <div><label class="form-label">Image:</label></div>
+                <input type="file" name="image">
+            </div>
     
             <div class="mb-3">
+                <label class="form-label">Title:</label>
+                <input type="text" name="title"  class="form-control">
+            </div>
+    
+            <div class="mb-3">
+                <label class="form-label">Ingredients:</label>
+                <textarea type="text" name="ingredients" class="form-control"></textarea>
+            </div>
+    
+            <div class="mb-3"><label class="form-label">Instructions:</label>
+                <textarea type="text" name="instructions" class="form-control"></textarea>
+            </div>
+    
+            <div class="mb-3">
+                <label class="form-label">Country of Origin</label>
+
                 <select name="country" class="form-select">
                     <option value="East Asian">East Asian</option>
                     <option value="South Asian">South Asian</option>

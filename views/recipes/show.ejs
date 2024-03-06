@@ -11,9 +11,12 @@
     <div class="mb-3">Instructions:</div>
     <div class="mb-3"><%= recipe.instructions %></div>
 
-    <div>
-        <button class="btn btn-primary btn-block mb-3">Add to Favorites</button>
-    </div>
+    <form action="/favourites/<%= recipe._id %>/add" method="POST">
+        <div>
+            <button class="btn btn-primary btn-block mb-3">Add to Favorites</button>
+        </div>
+    </form>
+    
     <div>
         <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-secondary btn-block mb-3">Edit Recipe</a>
     </div>

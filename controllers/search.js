@@ -17,7 +17,13 @@ async function index(req, res) {
 
             console.log('Search Results:', searchResults);
 
-            return res.render('recipes/index', { title: 'Search Result',recipesByCountry: { 'Search Results': searchResults } });
+            if (searchResults.length > 0) {
+                // If there are search results, render the results
+                return res.render('recipes/index', { title: 'Search Result', recipesByCountry: { 'Search Results': searchResults } });
+            } else {
+                // If there are no search results, render a message
+                return res.render('recipes/index', { title: 'No Search Result! Please Try Again', recipesByCountry: { 'Search Results': searchResults } });
+            }
         }
 
         // If there is no search query, render the same index as recipe controller index async function

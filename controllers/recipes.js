@@ -94,5 +94,12 @@ function groupRecipesByCountry(recipes) {
         recipesByCountry[country].push(recipe);
     });
 
+    //sorting recipe length in decending order
+    // Object.keys(recipesByCountry).forEach((country) => {
+    //     recipesByCountry[country].sort((a, b) => {
+    //         return recipesByCountry[b].length - recipesByCountry[a].length;
+    //     });
+    // });
+
     return recipesByCountry;
 }

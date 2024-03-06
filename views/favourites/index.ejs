@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<div class="row">
+    <% favourites.forEach(function(f) { %>
+        <div class="col-md-3 mb-4">
+            <div class="card recipe">
+                <% if (f.recipe.image) { %>
+                    <a href="/recipes/<%= f.recipe._id %>">
+                        <img src="<%= f.recipe.image %>" class="card-img-top recipeImg" alt="<%= f.recipe.title %>">
+                    </a>
+                <% } %>
+                <div class="card-body">
+                    <a href="/recipes/<%= f.recipe._id %>" class="card-title"><%= f.recipe.title %></a>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>
+
+<%- include('../partials/footer') %>

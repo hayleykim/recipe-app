@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
 
 <% if (recipesByCountry['Search Results']) { %>
-    <a href="/recipes" class="btn btn-secondary">Back to Recipes</a>
+    <a href="/recipes" class="btn btn-secondary"> < Back to Recipes</a>
 <% } %>
 
 <% Object.keys(recipesByCountry).forEach(function(country) { %>
@@ -24,9 +24,5 @@
     </div>
     
 <% }); %>
-
-
-
-
 
 <%- include('../partials/footer') %>
