@@ -11,6 +11,8 @@
     <div class="mb-3">Instructions:</div>
     <div class="mb-3"><%= recipe.instructions %></div>
 
+    <% if (user) { %>
+
     <form action="/favourites/<%= recipe._id %>/add" method="POST">
         <div>
             <button class="btn btn-primary btn-block mb-3">Add to Favorites</button>
@@ -27,13 +29,13 @@
     </div>
 
 
-    <div class="reviewSection mb-3">Reviews</div>
+    <div class="text-info fs-3 mb-3">Reviews:</div>
 
     <form id="" method="POST" action="/recipes/<%= recipe._id %>/reviews" class="mb-3">
         <label for="reviewContent">Review:</label>
-        <textarea name="content" id="reviewContent" class="form-control"></textarea>
+        <textarea name="content" id="reviewContent" class="form-control mb-3"  placeholder="Enter your review here"></textarea>
         <label for="reviewRating">Rating:</label>
-        <select name="rating" id="reviewRating" class="form-select">
+        <select name="rating" id="reviewRating" class="form-select mb-3">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -42,6 +44,11 @@
         </select>
         <input type="submit" value="Add Review" class="btn btn-primary">
     </form>
+
+    <% } else { %>
+        <div class="text-info fs-3 mb-3" placeholder="Enter your review here">Reviews:</div>
+
+    <% } %>
 
     <% if (recipe.reviews.length) { %>
         <table class="table">

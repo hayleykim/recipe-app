@@ -23,13 +23,15 @@
                             <a class="nav-link" href="/recipes">Recipes</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/recipes/new" <%- title === 'Add Recipe' ? 'class="active"' : '' %>>Add Recipe</a>
-                        </li>
+                        
 
                         <% if (user) { %>
                             <li class="nav-item">
-                                <a class="nav-link" href="/favourites/index" <%- title === 'Favourties' ? 'class="active"' : '' %>>Favourties</a>
+                                <a class="nav-link" href="/recipes/new" <%- title === 'Add Recipe' ? 'class="active"' : '' %>>Add Recipe</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/favourites" <%- title === 'Favourties' ? 'class="active"' : '' %>>Favourties</a>
                             </li>
 
                             <li class="nav-item">

@@ -1,20 +1,49 @@
 <%- include('../partials/header') %>
 
 <div class="row">
-    <% favourites.forEach(function(f) { %>
-        <div class="col-md-3 mb-4">
-            <div class="card recipe">
-                <% if (f.recipe.image) { %>
-                    <a href="/recipes/<%= f.recipe._id %>">
-                        <img src="<%= f.recipe.image %>" class="card-img-top recipeImg" alt="<%= f.recipe.title %>">
-                    </a>
-                <% } %>
-                <div class="card-body">
-                    <a href="/recipes/<%= f.recipe._id %>" class="card-title"><%= f.recipe.title %></a>
+    <% if (favouritesByCountry) { %>
+        <% Object.keys(favouritesByCountry).forEach(function (country) { %>
+          <h2><%= country %></h2>
+          <div class="row">
+            <% favouritesByCountry[country].forEach(function (favourite) { %>
+              <div class="col-md-3 mb-4">
+
+                <div class="card recipe">
+                    <%= console.log('Added date:', favourite.addedDate) %>
+                    <% if (favourite.image) { %>
+                        <a href="/recipes/<%= favourite._id %>">
+                        <img src="<%= favourite.image %>" class="card-img-top recipeImg" alt="<%= favourite.title %>">
+                        </a>
+                    <% } else { %>
+                        <p>Recipe details not available</p>
+                    <% } %>
+
+                    <div class="card-body">
+                        <% if (favourite) { %>
+                        <a href="/recipes/<%= favourite._id %>" class="card-title"><%= favourite.title %></a>
+                        <% } else { %>
+                        <p>Recipe details not available</p>
+                        <% } %>
+
+                        <% if (fave && fave.length > 0) { %>
+                            <% const matchingFaves = fave.filter(fav => fav.recipe._id.equals(favourite._id)); %>
+                            <% matchingFaves.forEach(function(fav) { %>
+                                <div class="text-info">
+                                Added on <%= fav.addedDate.toLocaleDateString() %>
+                                </div>
+                            <% }); %>
+                        <% } %>
+
+                    </div>
                 </div>
-            </div>
-        </div>
-    <% }); %>
+              </div>
+            <% }); %>
+          </div>
+        <% }); %>
+        
+      <% } else { %>
+        <p>No favourites available</p>
+      <% } %>
 </div>
 
 <%- include('../partials/footer') %>
