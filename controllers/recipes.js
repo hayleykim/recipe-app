@@ -53,22 +53,6 @@ async function create(req, res) {
     }
 }
 
-function groupRecipesByCountry(recipes) {
-    const recipesByCountry = {};
-
-    recipes.forEach((recipe) => {
-        const country = recipe.country;
-
-        if (!recipesByCountry[country]) {
-            recipesByCountry[country] = [];
-        }
-
-        recipesByCountry[country].push(recipe);
-    });
-
-    return recipesByCountry;
-}
-
 async function deleteRecipe(req, res) {
     try {
         const id = req.params.id;
@@ -95,4 +79,20 @@ async function update(req, res) {
     } catch (err) {
         console.error(err);
     }
+}
+
+function groupRecipesByCountry(recipes) {
+    const recipesByCountry = {};
+
+    recipes.forEach((recipe) => {
+        const country = recipe.country;
+
+        if (!recipesByCountry[country]) {
+            recipesByCountry[country] = [];
+        }
+
+        recipesByCountry[country].push(recipe);
+    });
+
+    return recipesByCountry;
 }

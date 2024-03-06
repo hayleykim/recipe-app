@@ -1,17 +1,28 @@
 <%- include('../partials/header.ejs') %>
 
+<% if (recipesByCountry['Search Results']) { %>
+    <a href="/recipes" class="btn btn-secondary">Back to Recipes</a>
+<% } %>
+
 <% Object.keys(recipesByCountry).forEach(function(country) { %>
     <h2><%= country %></h2>
-    <div class="countrySection">
+    <div class="row">
         <% recipesByCountry[country].forEach(function(recipe) { %>
-            <div class="recipe">
-                <% if (recipe.image) { %>
-                    <div><a href="/recipes/<%= recipe._id %>"><img class="recipeImg" src="<%= recipe.image %>"></a></div>
-                <% } %>
-                <div><a href="/recipes/<%= recipe._id %>"><%= recipe.title %></a></div>
+            <div class="col-md-3 mb-4">
+                <div class="card recipe">
+                    <% if (recipe.image) { %>
+                        <a href="/recipes/<%= recipe._id %>">
+                            <img src="<%= recipe.image %>" class="card-img-top recipeImg" alt="<%= recipe.title %>">
+                        </a>
+                    <% } %>
+                    <div class="card-body">
+                        <a href="/recipes/<%= recipe._id %>" class="card-title"><%= recipe.title %></a>
+                    </div>
+                </div>
             </div>
         <% }); %>
     </div>
+    
 <% }); %>
 
 

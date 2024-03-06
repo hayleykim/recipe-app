@@ -1,35 +1,16 @@
-body {
-  padding: 20px;
-  max-width: max-content;
-  margin: auto;
+.navbar-nav .nav-item {
+  margin-right: 10px;
 }
 
-a {
-  color: #00B7FF;
-}
-nav > a {
-  margin: 20px;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
+.navbar-nav .nav-link:hover {
+  color: #FFBE98;
+  
 }
 
-nav > a:hover:not(.active) {
-  color: white;
-  background-color: #424748;
-}
-
-nav > a.active {
-  color: white;
+.navbar-nav .nav-item.active .nav-link {
+  color: #FFBE98; 
   cursor: default;
-  background-color: #424748;
-}
-
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 34px;
+  pointer-events: none;
 }
 
 .recipeImg {
@@ -38,29 +19,27 @@ nav > a.active {
 }
 
 .recipeImgDetail {
-  width: 300px;
+  width: 350px;
 }
 
-.recipeTitle {
-  font-size: 20px;
-  font-weight: 300;
-}
-
-.reviewSection {
-  margin: 20px 0;
-  font-size: 20px;
-}
-
-.countrySection {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px gray solid;
-}
 
 .recipe {
   border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
 }
+
+.recipe a {
+  text-decoration: none;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+

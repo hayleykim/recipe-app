@@ -1,36 +1,44 @@
 <%- include('../partials/header.ejs') %>
 
-<form action="/recipes" enctype="multipart/form-data" method="POST">
-    <label>Image:</label>
-    <input type="file" name="image">
-
-    <label>Title:</label>
-    <input type="text" name="title">
-
-    <label>Ingredients:</label>
-    <input type="text" name="ingredients">
-
-    <label>Instructions:</label>
-    <input type="text" name="instructions">
-
-    <label>Country of Origin</label>
-
-    <select name="country">
-        <option value="East Asian">East Asian</option>
-        <option value="South Asian">South Asian</option>
-        <option value="North Asian">North Asian</option>
-        <option value="Central Asian">Central Asian</option>
-        <option value="West Asian">West Asian</option>
-        <option value="South East Asian">South East Asian</option>
-        <option value="European">European</option>
-        <option value="North American">North American</option>
-        <option value="South American">South American</option>
-        <option value="African">African</option>
-        <option value="Oceanian">Oceanian</option>
-        <option value="Other">Other</option>
-    </select>
-
-    <input type="submit" value="Add Recipe">
-</form>
+<div class="row">
+    <div class="offset-md-4 col-md-4">
+        <form action="/recipes" enctype="multipart/form-data" method="POST">
+            <div><label class="form-label">Image:</label></div>
+            <div><input type="file" name="image"></div>
+    
+            <div><label class="form-label">Title:</label></div>
+            <div><input type="text" name="title"  class="form-control"></div>
+    
+            <div><label class="form-label">Ingredients:</label></div>
+            <div><textarea type="text" name="ingredients" class="form-control"></textarea></div>
+    
+            <div><label class="form-label">Instructions:</label></div>
+            <div><textarea type="text" name="instructions" class="form-control"></textarea></div>
+    
+            <div><label class="form-label">Country of Origin</label></div>
+    
+            <div class="mb-3">
+                <select name="country" class="form-select">
+                    <option value="East Asian">East Asian</option>
+                    <option value="South Asian">South Asian</option>
+                    <option value="North Asian">North Asian</option>
+                    <option value="Central Asian">Central Asian</option>
+                    <option value="West Asian">West Asian</option>
+                    <option value="South East Asian">South East Asian</option>
+                    <option value="European">European</option>
+                    <option value="North American">North American</option>
+                    <option value="South American">South American</option>
+                    <option value="African">African</option>
+                    <option value="Oceanian">Oceanian</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div>
+                <button class="btn btn-primary btn-sm">Add Recipe</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>

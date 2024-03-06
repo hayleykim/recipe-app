@@ -1,79 +1,83 @@
 <%- include('../partials/header') %>
+<section class="container col-md-8">
+    <h2 class="recipeTitle"><%= recipe.title %></h2>
+    <div class="mb-3">
+        <img src="<%= recipe.image %>" class="img-fluid recipeImgDetail" alt="image of this recipe">
+    </div>
 
-<section>
-    <div class="recipeTitle"><%= recipe.title %></div>
-    <div><img class="recipeImgDetail" src="<%= recipe.image %>" alt="image of this recipe"></div>
+    <div class="mb-3">Ingredients:</div>
+    <div class="mb-3"><%= recipe.ingredients %></div>
+    
+    <div class="mb-3">Instructions:</div>
+    <div class="mb-3"><%= recipe.instructions %></div>
 
-    <div>Ingredients:</div>
-    <div><%= recipe.ingredients %></div>
-    <div>Instructions:</div>
-    <div><%= recipe.instructions %></div>
-</section>
-
-<button>Add to Favourties</button>
-
-<div><a href="/recipes/<%= recipe._id %>/edit">Edit This Recipe</a></div>
-
-<form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="delete-form">
-    <div><button type="submit">Delete This Recipe</button></div>
-</form>
+    <div>
+        <button class="btn btn-primary btn-block mb-3">Add to Favorites</button>
+    </div>
+    <div>
+        <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-secondary btn-block mb-3">Edit Recipe</a>
+    </div>
+    <div>
+        <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="delete-form">
+            <button type="submit" class="btn btn-danger btn-block mb-3">Delete Recipe</button>
+        </form>
+    </div>
 
 
+    <div class="reviewSection mb-3">Reviews</div>
 
-<div class="reviewSection">Reviews</div>
+    <form id="" method="POST" action="/recipes/<%= recipe._id %>/reviews" class="mb-3">
+        <label for="reviewContent">Review:</label>
+        <textarea name="content" id="reviewContent" class="form-control"></textarea>
+        <label for="reviewRating">Rating:</label>
+        <select name="rating" id="reviewRating" class="form-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5" selected>5</option>
+        </select>
+        <input type="submit" value="Add Review" class="btn btn-primary">
+    </form>
 
-<form id="" method="POST"
-    action="/recipes/<%= recipe._id %>/reviews">
-    <label>Review:</label>
-    <textarea name="content"></textarea>
-    <label>Rating:</label>
-    <select name="rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5" selected>5</option>
-    </select>
-    <input type="submit" value="Add Review">
-</form>
-
-<% if (recipe.reviews.length) { %>
-    <table>
-        <thead>
-        <tr>
-            <th>User</th>
-            <th>Date</th>
-            <th>Review</th>
-            <th>Rating</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <% let total = 0 %>
-        <% recipe.reviews.forEach(function(r) { %>
-            <% total += r.rating %>
+    <% if (recipe.reviews.length) { %>
+        <table class="table">
+            <thead>
             <tr>
-            <td class="review-user"><%= r.userName %></td>
-            <td><%= r.createdAt.toLocaleDateString() %></td>
-            <td><%= r.content %></td>
-            <td><%= r.rating %></td>
-            <td>
-                <% if (user?._id.equals(r.user)) { %>
-                <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                    <button type="submit">X</button>
-                </form>
-                <% } %>
-            </td>
+                <th>User</th>
+                <th>Date</th>
+                <th>Review</th>
+                <th>Rating</th>
+                <th></th>
             </tr>
-        <% }); %>
-        <tr>
-            <td colspan="3"></td>
-            <td><strong><%= (total / recipe.reviews.length).toFixed(1) %></strong></td>
-        </tr>
-        </tbody>
-    </table>
-<% } else { %>
-    <h5>No Reviews Yet</h5>
-<% } %>
+            </thead>
+            <tbody>
+            <% let total = 0 %>
+            <% recipe.reviews.forEach(function(r) { %>
+                <% total += r.rating %>
+                <tr>
+                    <td class="review-user"><%= r.userName %></td>
+                    <td><%= r.createdAt.toLocaleDateString() %></td>
+                    <td><%= r.content %></td>
+                    <td><%= r.rating %></td>
+                    <td>
+                        <% if (user?._id.equals(r.user)) { %>
+                            <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-danger">X</button>
+                            </form>
+                        <% } %>
+                    </td>
+                </tr>
+            <% }); %>
+            <tr>
+                <td colspan="3"></td>
+                <td><strong><%= (total / recipe.reviews.length).toFixed(1) %></strong></td>
+            </tr>
+            </tbody>
+        </table>
+    <% } else { %>
+        <h5>No Reviews Yet</h5>
+    <% } %>
+</section>
 
 <%- include('../partials/footer') %>

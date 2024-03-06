@@ -3,10 +3,15 @@ const router = express.Router();
 const upload = require('../utilities/multer');
 const recipesController = require('../controllers/recipes');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
-const recipe = require('../models/recipe');
+const searchController = require('../controllers/search');
+
 
 // GET /recipes
 router.get('/', recipesController.index);
+
+// GET /recipes/search
+router.get('/search', searchController.index);
+
 
 // GET /recipes/new
 
