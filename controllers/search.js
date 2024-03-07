@@ -27,11 +27,11 @@ async function index(req, res) {
         const recipes = await Recipe.find({});
         const recipesByCountry = groupRecipesByCountry(recipes);
 
-        console.log('Recipes By Country:', recipesByCountry);
-
         res.render('recipes/index', { title: 'Recipes', recipes, recipesByCountry });
 
     } catch (err) {
         console.error(err);
     }
 }
+
+

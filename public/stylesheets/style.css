@@ -11,12 +11,6 @@
   
 }
 
-.navbar-nav .nav-item.active .nav-link {
-  color: #FFBE98; 
-  cursor: default;
-  pointer-events: none;
-}
-
 .recipeImg {
   width: 200px;
   height: 200px;
@@ -25,7 +19,6 @@
 .recipeImgDetail {
   width: 350px;
 }
-
 
 .recipe {
   border: 1px solid #ccc;

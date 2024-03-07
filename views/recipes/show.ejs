@@ -13,14 +13,13 @@
 
     <% if (user) { %>
         <div class="mb-3">
-
             <% if (favorites && favorites.length > 0) { %>
                 <form action="/favourites/<%= favorites[0]._id %>?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-danger">Remove from Favorites</button>
+                    <button type="submit" class="btn btn-danger">Remove from Favourites</button>
                 </form>
             <% } else { %>
                 <form action="/favourites/<%= recipe._id %>/add" method="POST">
-                    <button type="submit" class="btn btn-primary">Add to Favorites</button>
+                    <button type="submit" class="btn btn-primary">Add to Favourites</button>
                 </form>
             <% } %>
                     
