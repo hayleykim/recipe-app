@@ -28,8 +28,7 @@ async function index(req, res) {
 async function show(req, res) {
     const recipe = await Recipe.findById(req.params.id);
 
-    const user = req.user;
-    const favorites = await Favourite.find({ user: user._id, recipe: recipe._id });
+    const favorites = await Favourite.find({  recipe: recipe._id });
 
     res.render('recipes/show', { title: 'Recipe Detail', recipe, favorites})
 }
@@ -41,8 +40,6 @@ async function newRecipe(req, res) {
 async function create(req, res) {
     try {
         const result = await cloudinary.uploader.upload(req.file.path);
-        // await Recipe.create(req.body);
-        
 
         const recipe = new Recipe({
             ...req.body,
@@ -50,7 +47,6 @@ async function create(req, res) {
             cloudinary_id: result.public_id
         })
         await recipe.save();
-        //res.redirect('/recipes/${recipe._id}');
         res.redirect('/recipes');
 
     } catch (err) {
@@ -100,12 +96,28 @@ function groupRecipesByCountry(recipes) {
         recipesByCountry[country].push(recipe);
     });
 
-    //sorting recipe length in decending order
-    // Object.keys(recipesByCountry).forEach((country) => {
-    //     recipesByCountry[country].sort((a, b) => {
-    //         return recipesByCountry[b].length - recipesByCountry[a].length;
-    //     });
-    // });
+    
+    //Countries in alphabetical order
+    const sortedCountries = Object.keys(recipesByCountry).sort();
 
-    return recipesByCountry;
+    //Recipes in each country in alphabetical order
+     const sortedRecipesByCountry = {};
+
+     sortedCountries.forEach((country) => {
+        
+         sortedRecipesByCountry[country] = recipesByCountry[country].sort((a, b) => {
+             const titleA = a.title.toUpperCase();
+             const titleB = b.title.toUpperCase();
+             
+             if (titleA < titleB) {
+                return -1;
+            } else if (titleA > titleB) {
+                return 1;
+            } else {
+                return 0;
+            }
+         });
+     });
+
+    return sortedRecipesByCountry;
 }
