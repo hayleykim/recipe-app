@@ -18,8 +18,8 @@ To view the recipe app, click this link: [Recipe App](https://hayleykim.github.i
 
 
 <p align="center" width="100%">
-    <img src="images/homepage.png" height="400" width="400px" alt="home page image"/>
-    <img src="images/favouritespage.png" height="400" width="400px" alt="favourites page image"/>
+    <img src="public/images/homepage.png" height="400" width="400px" alt="home page image"/>
+    <img src="public/images/favouritespage.png" height="400" width="400px" alt="favourites page image"/>
 </p>
 
 
