@@ -2,11 +2,11 @@
 
 As a food lover, I built this app to add all the recipes I love and would like to try in the future.
 
-The main point of this app is to view the recipes by country of origin (which could be controversal but please forgive me, I have tried my best),
-
-so that I could easily navigate the recipes depending on what I feel like to eat!
+The main point of this app is to view the recipes by country of origin (which could be controversial but please forgive me, I've tried my best!), so that I could easily navigate the recipes depending on what I feel like to eat.
 
 This app has a log in feature which allows you to save your favourite recipes in one page + adding recipes.
+
+It also allows you to search recipes by title, so feel free to search your favourite recipes :D
 
 
 ## View App
@@ -44,4 +44,5 @@ I still tried to make it look nice and clean, using bright colours!
 ## Next Steps
 
 * Could add features where it breaks down to acutal country of origin instead of using continents for recipes
+* Improvments on search feature - allow users to search by ingredients etc. 
 * Improvments on CSS - to make it look more appealing!
