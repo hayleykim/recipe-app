@@ -30,7 +30,6 @@
                             <% matchingFaves.forEach(function(fav) { %>
                                 <div class="text-info">
                                 Added on <%= fav.addedDate.toLocaleDateString() %>
-                                <%= console.log('fav id:', fav._id) %>
                                 </div>
                                 <form action="/favourites/<%= fav._id %>?_method=DELETE" method="POST">
                                     <button type="submit" class="btn btn-danger">Remove</button>

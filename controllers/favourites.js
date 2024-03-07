@@ -43,17 +43,17 @@ module.exports = {
 
   async function deleteFavourites(req, res) {
     try {
-        // const id = req.params.id;
-        // await Favourite.findOneAndDelete({ _id: id });
-        // res.redirect('/favourites');
+        const id = req.params.id;
+        await Favourite.findByIdAndDelete(id);
+        res.redirect('/favourites');
 
-        const favourite = await Favourite.findOne({ _id: id, user: req.user._id });
+        // const favourite = await Favourite.findOne({ _id: id, user: req.user._id });
 
-        if (!favourite) {
-            return res.redirect('/favourites');
-        }
+        // if (!favourite) {
+        //     return res.redirect('/favourites');
+        // }
 
-        await favourite.remove();
+        // await favourite.remove();
 
         res.redirect('/favourites');
     } catch (err) {
