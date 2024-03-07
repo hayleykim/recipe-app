@@ -9,13 +9,10 @@ async function index(req, res) {
         //Getting the search query from the URL
         const query = req.query.query;
 
-        console.log('Search Query:', query);
-
         //If there is a query:
         if (query) {
-            const searchResults = await Recipe.find({ title: { $regex: new RegExp(query, 'i') } });
-
-            console.log('Search Results:', searchResults);
+            //case insensitive + it will find all the matching recipes if the type word is included in the title of the recipe
+            const searchResults = await Recipe.find({ title: { $regex: new RegExp(query, 'i') } }); 
 
             if (searchResults.length > 0) {
                 // If there are search results, render the results

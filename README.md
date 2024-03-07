@@ -1,10 +1,12 @@
 # Recipe App by Hayley
 
-As a food lover, I built this app to add all the recipes I love and would like to try in the future.
+As a food lover, I built this app to add all the recipes that I love & would like to try in the future.
 
-The main point of this app is to view the recipes by country of origin (which could be controversial but please forgive me, I've tried my best!), so that I could easily navigate the recipes depending on what I feel like to eat.
+The main feature of this app is to view the recipes by country of origin (which could be controversial but please forgive me, I've tried my best!), 
 
-This app has a log in feature which allows you to save your favourite recipes in one page + adding recipes.
+to easily navigate the recipes depending on what I feel like to have.
+
+This app has a log in feature which allows you to save your favourite recipes in one page and to add new recipes.
 
 It also allows you to search recipes by title, so feel free to search your favourite recipes :D
 
