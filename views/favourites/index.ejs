@@ -20,7 +20,9 @@
 
                     <div class="card-body">
                         <% if (favourite) { %>
-                        <a href="/recipes/<%= favourite._id %>" class="card-title"><%= favourite.title %></a>
+                        <div class="mb-2">
+                            <a href="/recipes/<%= favourite._id %>" class="card-title"><%= favourite.title %></a>
+                        </div>
                         <% } else { %>
                         <p>Recipe details not available</p>
                         <% } %>
@@ -28,7 +30,7 @@
                         <% if (fave && fave.length > 0) { %>
                             <% const matchingFaves = fave.filter(fav => fav.recipe._id.equals(favourite._id)); %>
                             <% matchingFaves.forEach(function(fav) { %>
-                                <div class="text-info">
+                                <div class="text-info mb-2">
                                 Added on <%= fav.addedDate.toLocaleDateString() %>
                                 </div>
                                 <form action="/favourites/<%= fav._id %>?_method=DELETE" method="POST">

@@ -46,16 +46,6 @@ module.exports = {
         const id = req.params.id;
         await Favourite.findByIdAndDelete(id);
         res.redirect('/favourites');
-
-        // const favourite = await Favourite.findOne({ _id: id, user: req.user._id });
-
-        // if (!favourite) {
-        //     return res.redirect('/favourites');
-        // }
-
-        // await favourite.remove();
-
-        res.redirect('/favourites');
     } catch (err) {
         console.error(err);
     }
@@ -74,5 +64,28 @@ function groupRecipesByCountry(recipes) {
         recipesByCountry[country].push(recipe);
     });
 
-    return recipesByCountry;
+    
+    //Countries in alphabetical order
+    const sortedCountries = Object.keys(recipesByCountry).sort();
+
+    //Recipes in each country in alphabetical order
+     const sortedRecipesByCountry = {};
+
+     sortedCountries.forEach((country) => {
+        
+         sortedRecipesByCountry[country] = recipesByCountry[country].sort((a, b) => {
+             const titleA = a.title.toUpperCase();
+             const titleB = b.title.toUpperCase();
+             
+             if (titleA < titleB) {
+                return -1;
+            } else if (titleA > titleB) {
+                return 1;
+            } else {
+                return 0;
+            }
+         });
+     });
+
+    return sortedRecipesByCountry;
 }
