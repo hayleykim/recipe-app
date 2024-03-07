@@ -9,9 +9,7 @@ This app has a log in feature which allows you to save your favourite recipes in
 It also allows you to search recipes by title, so feel free to search your favourite recipes :D
 
 
-## View App
 
-To view the recipe app, click this link: [Recipe App](https://hayleykim.github.io/recipe-app)
 
 
 ## Images
