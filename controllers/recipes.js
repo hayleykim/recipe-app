@@ -1,4 +1,5 @@
 const Recipe = require('../models/recipe');
+const Favourite = require('../models/favourite');
 const cloudinary = require('../utilities/cloudinary');
 
 module.exports = {
@@ -16,6 +17,8 @@ async function index(req, res) {
         const recipes = await Recipe.find({});
         const recipesByCountry = groupRecipesByCountry(recipes);
 
+        
+
         res.render('recipes/index', { title: 'Recipes', recipes, recipesByCountry });
     } catch (err) {
         console.error(err);
@@ -25,7 +28,10 @@ async function index(req, res) {
 async function show(req, res) {
     const recipe = await Recipe.findById(req.params.id);
 
-    res.render('recipes/show', { title: 'Recipe Detail', recipe})
+    const user = req.user;
+    const favorites = await Favourite.find({ user: user._id, recipe: recipe._id });
+
+    res.render('recipes/show', { title: 'Recipe Detail', recipe, favorites})
 }
 
 async function newRecipe(req, res) {

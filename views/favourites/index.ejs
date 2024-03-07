@@ -9,7 +9,7 @@
               <div class="col-md-3 mb-4">
 
                 <div class="card recipe">
-                    <%= console.log('Added date:', favourite.addedDate) %>
+                    
                     <% if (favourite.image) { %>
                         <a href="/recipes/<%= favourite._id %>">
                         <img src="<%= favourite.image %>" class="card-img-top recipeImg" alt="<%= favourite.title %>">
@@ -30,8 +30,13 @@
                             <% matchingFaves.forEach(function(fav) { %>
                                 <div class="text-info">
                                 Added on <%= fav.addedDate.toLocaleDateString() %>
+                                <%= console.log('fav id:', fav._id) %>
                                 </div>
+                                <form action="/favourites/<%= fav._id %>?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn btn-danger">Remove</button>
+                                </form>
                             <% }); %>
+
                         <% } %>
 
                     </div>

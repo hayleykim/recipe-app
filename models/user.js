@@ -8,7 +8,13 @@ const userSchema = new Schema({
     required: true
   },
   email: String,
-  avatar: String
+  avatar: String,
+  favourites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Favourite'
+    }
+  ]
 }, {
   timestamps: true
 });

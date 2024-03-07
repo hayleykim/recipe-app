@@ -14,9 +14,11 @@ module.exports = {
 
         const fave = await Favourite.find({user: req.user._id});
 
+        const recipes = await Recipe.find({});
+
         const favouritesByCountry = groupRecipesByCountry(favourites.map(favourite => favourite.recipe));
 
-        res.render('favourites/index', { title: 'My Favourites', fave, favouritesByCountry });
+        res.render('favourites/index', { title: 'My Favourites', fave, favouritesByCountry, recipes });
     } catch (err) {
         console.log(err);
     }
@@ -41,8 +43,18 @@ module.exports = {
 
   async function deleteFavourites(req, res) {
     try {
-        const id = req.params.id;
-        await Favourite.findOneAndDelete({ _id: id });
+        // const id = req.params.id;
+        // await Favourite.findOneAndDelete({ _id: id });
+        // res.redirect('/favourites');
+
+        const favourite = await Favourite.findOne({ _id: id, user: req.user._id });
+
+        if (!favourite) {
+            return res.redirect('/favourites');
+        }
+
+        await favourite.remove();
+
         res.redirect('/favourites');
     } catch (err) {
         console.error(err);

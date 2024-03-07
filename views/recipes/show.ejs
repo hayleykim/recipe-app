@@ -12,12 +12,20 @@
     <div class="mb-3"><%= recipe.instructions %></div>
 
     <% if (user) { %>
+        <div class="mb-3">
 
-    <form action="/favourites/<%= recipe._id %>/add" method="POST">
-        <div>
-            <button class="btn btn-primary btn-block mb-3">Add to Favorites</button>
+            <% if (favorites && favorites.length > 0) { %>
+                <form action="/favourites/<%= recipe._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Remove from Favorites</button>
+                </form>
+            <% } else { %>
+                <form action="/favourites/<%= recipe._id %>/add" method="POST">
+                    <button type="submit" class="btn btn-primary">Add to Favorites</button>
+                </form>
+            <% } %>
+                    
         </div>
-    </form>
+
     
     <div>
         <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-secondary btn-block mb-3">Edit Recipe</a>
