@@ -44,8 +44,10 @@ async function create(req, res) {
         const recipe = new Recipe({
             ...req.body,
             image: result.secure_url,
-            cloudinary_id: result.public_id
+            cloudinary_id: result.public_id,
+            favourites: []
         })
+
         await recipe.save();
         res.redirect('/recipes');
 
@@ -76,7 +78,12 @@ async function edit(req, res) {
 
 async function update(req, res) {
     try {
-        await Recipe.findByIdAndUpdate(req.params.id, req.body);
+        const existingRecipe = await Recipe.findById(req.params.id);
+
+        // Ensuring that favourites is not overwritten with an empty array
+        req.body.favourites = existingRecipe.favourites;
+
+        await existingRecipe.updateOne(req.body);
         res.redirect(`/recipes/${req.params.id}`);
     } catch (err) {
         console.error(err);

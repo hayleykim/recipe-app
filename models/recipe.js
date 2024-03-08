@@ -48,10 +48,10 @@ const recipeSchema = new Schema({
     cloudinary_id: {
         type: String
     },
-    favourites: {
+    favourites: [{
         type: Schema.Types.ObjectId,
         ref: 'Favourite'
-    },  
+    }],  
     reviews: [reviewSchema],
      
 }, {
