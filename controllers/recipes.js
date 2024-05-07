@@ -19,7 +19,7 @@ async function index(req, res) {
 
         
 
-        res.render('recipes/recipes', { title: 'Recipes', recipes, recipesByCountry });
+        res.render('recipes/index', { title: 'Recipes', recipes, recipesByCountry });
     } catch (err) {
         console.error(err);
     }

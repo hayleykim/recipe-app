@@ -5,7 +5,16 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Recipe App' });
+  try {
+    const recipes = Recipe.find({});
+    const recipesByCountry = groupRecipesByCountry(recipes);
+
+    
+
+    res.render('recipes/index', { title: 'Recipes', recipes, recipesByCountry });
+} catch (err) {
+    console.error(err);
+}
 });
 
 // Google OAuth login route
