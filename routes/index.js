@@ -5,7 +5,7 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Recipe App' });
+  res.render('recipes', { title: 'Recipe App' });
 });
 
 // Google OAuth login route
@@ -14,7 +14,8 @@ router.get('/auth/google', passport.authenticate(
   {
     // Requesting the user's profile and email
     scope: ['profile', 'email'],
-    // Optionally force pick account every time
+    // Optionally force pick account every timeclear
+    
     // prompt: "select_account"
   }
 ));
